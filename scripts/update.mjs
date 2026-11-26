@@ -69,6 +69,7 @@ async function main() {
     const q = { ...p };
     if (q.type === "savings" && q.guaranteed == null) q.guaranteed = q.rate;
     if (q.type === "deposit") q.rates = Object.fromEntries(Object.entries(q.rates || {}).filter(([m, v]) => +m <= 12 && v != null).sort((a, b) => a[0] - b[0]));
+    for (const k of ["conditions", "note", "accrual"]) if (typeof q[k] === "string") q[k] = q[k].replace(/(\d)\.(\d+)(?=\s?%)/g, "$1,$2"); // ru decimal comma
     q.id = pid(q);
     return q;
   }).sort((a, b) => order[a.bank] - order[b.bank] || (a.type > b.type ? 1 : -1));
