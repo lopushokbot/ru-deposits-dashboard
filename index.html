@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вклады и накопительные счета · премиум</title>
+<meta name="description" content="Ставки по вкладам до 12 месяцев и накопительным счетам для премиальных клиентов Сбера, ВТБ, Т-Банка, Альфы, Газпромбанка и ПСБ. Обновляется каждый день.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230071e3'/%3E%3Cpath d='M14 44 L26 32 L36 38 L50 20' stroke='white' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ставки">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+/* ---------- Fonts ---------- */
+@font-face { font-family: "New York"; src: url("assets/fonts/NewYorkLarge-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "New York"; src: url("assets/fonts/NewYorkLarge-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "New York"; src: url("assets/fonts/NewYorkLarge-Semibold.otf") format("opentype"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "New York"; src: url("assets/fonts/NewYorkLarge-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("assets/fonts/InterVariable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+
+/* ---------- Tokens ---------- */
+:root {
+  color-scheme: light dark;
+  --page: #f5f5f7; --card: #ffffff; --ink: #1d1d1f; --ink-2: #52514e; --muted: #86868b;
+  --hairline: rgba(0,0,0,0.08); --grid: #e8e8ed;
+  --accent: #0071e3; --accent-soft: rgba(0,113,227,0.10); --accent-softer: rgba(0,113,227,0.05);
+  --good: #006300; --bad: #b04a17; --tick: #1d1d1f;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --s-vtb: #257de0; --s-psb: #f47230; --s-sber: #00b894; --s-tbank: #f2a600; --s-alfa: #ee7fac; --s-gpb: #008a17;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #000000; --card: #1c1c1e; --ink: #f5f5f7; --ink-2: #c3c2b7; --muted: #98989d;
+    --hairline: rgba(255,255,255,0.12); --grid: #2c2c2e;
+    --accent: #2997ff; --accent-soft: rgba(41,151,255,0.16); --accent-softer: rgba(41,151,255,0.07);
+    --good: #30d158; --bad: #ff9f0a; --tick: #f5f5f7; --shadow: none;
+    --s-vtb: #338ced; --s-psb: #e76624; --s-sber: #00a888; --s-tbank: #d28e05; --s-alfa: #e24d8b; --s-gpb: #0aac23;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", -apple-system, system-ui, sans-serif; background: var(--page); color: var(--ink); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Hero ---------- */
+header { padding: 80px 0 48px; text-align: center; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+h1 { font-family: "New York", Georgia, serif; font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; margin-bottom: 16px; }
+.sub { font-size: 18px; color: var(--muted); max-width: 680px; margin: 0 auto; }
+.sub strong { color: var(--ink-2); font-weight: 500; }
+.stamp { font-size: 13px; color: var(--muted); margin-top: 14px; }
+.stamp .warn { color: var(--bad); }
+
+/* ---------- Sections ---------- */
+section { padding: 32px 0; }
+.section-title { font-family: "New York", Georgia, serif; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; }
+.section-sub { font-size: 15px; color: var(--muted); margin-bottom: 24px; max-width: 820px; }
+.card { background: var(--card); border-radius: 16px; padding: 32px; box-shadow: var(--shadow); border: 1px solid var(--hairline); }
+@media (max-width: 640px) { .card { padding: 20px 16px; } }
+.card + .card { margin-top: 24px; }
+
+/* ---------- Tiles ---------- */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } }
+.tile { background: var(--card); border-radius: 16px; padding: 26px 24px; box-shadow: var(--shadow); border: 1px solid var(--hairline); display: flex; flex-direction: column; }
+.tile .label { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 8px; }
+.tile .name { font-size: 15px; font-weight: 600; color: var(--ink-2); margin-top: 2px; line-height: 1.35; }
+.tile .value { font-size: 44px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 10px 0 6px; font-variant-numeric: tabular-nums; }
+.tile .value small { font-size: 22px; font-weight: 500; color: var(--muted); }
+.tile .context { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.kv { margin: 14px 0 4px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 13px; line-height: 1.55; }
+.kv div { display: flex; justify-content: space-between; gap: 12px; }
+.kv dt { color: var(--muted); }
+.kv dd { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+.kv .src dd { color: var(--ink-2); font-weight: 400; }
+
+/* ---------- Positions ---------- */
+.pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 960px) { .pos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .pos-grid { grid-template-columns: 1fr; } }
+.pos .bankline { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.pos .kind { margin-left: auto; font-size: 11px; letter-spacing: 0.05em; }
+.pos .verdict { margin-top: 12px; font-size: 13.5px; line-height: 1.5; padding: 10px 12px; border-radius: 10px; background: var(--accent-softer); color: var(--ink-2); }
+.pos .verdict b { color: var(--ink); font-weight: 600; }
+.pos .verdict.ok { background: transparent; padding: 10px 0 0; border-top: 1px solid var(--hairline); border-radius: 0; }
+.pos .flag { margin-top: 10px; font-size: 12.5px; color: var(--bad); line-height: 1.5; }
+
+/* ---------- Highlights ---------- */
+.hl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1000px) { .hl-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .hl-grid { grid-template-columns: 1fr; } }
+.hl { position: relative; }
+.hl .why { font-size: 13.5px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
+.hl .cond { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+.hl .cmp { margin-top: auto; padding-top: 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--hairline); }
+.hl .cmp b { color: var(--good); font-weight: 600; }
+.hl .spacer { flex: 1; min-height: 12px; }
+
+.badge { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 1.5px 6px; margin-left: 6px; vertical-align: 1px; white-space: nowrap; }
+.badge.grey { color: var(--muted); background: var(--grid); }
+.badge.warn { color: var(--bad); background: color-mix(in srgb, var(--bad) 12%, transparent); }
+.badge:first-child { margin-left: 0; }
+
+/* ---------- Controls ---------- */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; margin-bottom: 20px; font-size: 13.5px; color: var(--ink-2); }
+.seg { display: inline-flex; background: var(--grid); border-radius: 9px; padding: 2px; }
+.seg button { font: inherit; font-size: 13px; font-weight: 500; border: 0; background: transparent; color: var(--ink-2); padding: 5px 12px; border-radius: 7px; cursor: pointer; }
+.seg button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.chk { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none; }
+.chk input { accent-color: var(--accent); width: 15px; height: 15px; }
+
+/* ---------- Chart ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 14px; }
+.legend button { font: inherit; display: inline-flex; align-items: center; gap: 7px; background: none; border: 0; color: inherit; cursor: pointer; padding: 2px 0; }
+.legend button.off { opacity: 0.35; }
+.legend .sw { width: 16px; height: 3px; border-radius: 2px; }
+.legend .sw-ref { width: 16px; height: 0; border-top: 2px dashed var(--muted); }
+.chart-scroll { overflow-x: auto; }
+svg.chart { display: block; width: 100%; min-width: 640px; height: auto; font-family: "Inter", system-ui, sans-serif; }
+.chart-note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+.tooltip { position: fixed; pointer-events: none; z-index: 50; opacity: 0; transition: opacity 0.12s ease; background: var(--card); color: var(--ink); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px 14px; font-size: 13px; line-height: 1.5; box-shadow: 0 6px 24px rgba(0,0,0,0.16); max-width: 320px; }
+.tooltip .tt-title { font-weight: 600; margin-bottom: 4px; }
+.tooltip .tt-line { color: var(--ink-2); display: flex; justify-content: space-between; gap: 14px; align-items: center; }
+.tooltip .tt-line span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+.tooltip .tt-line b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.tooltip .tt-note { color: var(--muted); margin-top: 6px; font-size: 12.5px; }
+
+/* ---------- Tables ---------- */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+table.dep { min-width: 980px; }
+table.sav { min-width: 900px; }
+table.fnd { min-width: 760px; }
+thead th { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 0 8px 12px; border-bottom: 1px solid var(--hairline); white-space: nowrap; user-select: none; }
+thead th.sortable { cursor: pointer; }
+thead th:first-child { text-align: left; padding-left: 0; }
+thead th .arrow { font-size: 10px; opacity: 0; margin-left: 3px; }
+thead th.sorted .arrow { opacity: 1; }
+thead th.focus { color: var(--ink-2); }
+tbody td { padding: 12px 8px; text-align: right; border-bottom: 1px solid var(--hairline); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+tbody td:first-child { text-align: left; padding-left: 0; white-space: normal; }
+tbody tr:not(.grp):hover { background: var(--accent-softer); }
+td.focus { background: var(--accent-softer); }
+td.best { color: var(--accent); font-weight: 700; }
+td.top { font-weight: 600; }
+td.na { color: var(--muted); }
+td.txt { text-align: left; white-space: normal; font-size: 13px; color: var(--ink-2); line-height: 1.45; min-width: 220px; }
+.pn { display: flex; flex-direction: column; line-height: 1.35; min-width: 210px; }
+.pn .p1 { font-weight: 600; font-size: 14.5px; }
+.pn .p2 { font-size: 12.5px; color: var(--muted); }
+.stale { opacity: 0.6; }
+.grp td { padding: 22px 0 8px; border-bottom: 1px solid var(--hairline); text-align: left; white-space: normal; }
+tbody tr.grp:first-child td { padding-top: 4px; }
+.grp .gname { font-family: "New York", Georgia, serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-right: 10px; }
+.grp .gtier { font-size: 12.5px; color: var(--muted); }
+.grp .dot { display: inline-block; margin-right: 8px; vertical-align: 2px; }
+.mini { font-size: 12px; color: var(--muted); display: block; font-weight: 400; }
+.legend-inline { font-size: 12.5px; color: var(--muted); margin-top: 14px; line-height: 1.7; }
+.legend-inline .badge { margin: 0 4px 0 0; }
+
+/* ---------- Changes ---------- */
+.chg { display: grid; grid-template-columns: 92px 1fr auto; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--hairline); font-size: 14px; align-items: baseline; }
+.chg:last-child { border-bottom: none; }
+.chg .cd { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; }
+.chg .cv { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.up { color: var(--good); font-weight: 600; } .down { color: var(--bad); font-weight: 600; }
+.empty { font-size: 14px; color: var(--muted); }
+
+/* ---------- Sources & notes ---------- */
+.src-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 32px; }
+@media (max-width: 800px) { .src-grid { grid-template-columns: 1fr; } }
+.src-item { padding: 10px 0; border-bottom: 1px solid var(--hairline); font-size: 13.5px; line-height: 1.5; }
+.src-item b { font-weight: 600; }
+.src-item .ok { color: var(--good); } .src-item .err { color: var(--bad); }
+.src-item .m { color: var(--muted); font-size: 12.5px; display: block; }
+.notes { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.notes li { margin: 0 0 8px 18px; }
+.notes b { color: var(--ink-2); font-weight: 600; }
+footer { padding: 48px 0 64px; text-align: center; font-size: 13px; color: var(--muted); }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+
+.fade { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.in { opacity: 1; transform: none; }
+#loading { text-align: center; color: var(--muted); padding: 40px 0; font-size: 15px; }
+@media (prefers-reduced-motion: reduce) { .fade { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">Сбережения · премиальное обслуживание</div>
+  <h1>Вклады и накопительные счета</h1>
+  <p class="sub">Шесть банков — <strong>Сбер, ВТБ, Т-Банк, Альфа, Газпромбанк, ПСБ</strong> — по ставкам для премиальных клиентов. Вклады до 12 месяцев, основной фокус на 2–6 месяцах.</p>
+  <p class="stamp" id="stamp">Загружаем ставки…</p>
+</header>
+
+<main class="wrap">
+  <div id="loading"></div>
+
+  <section class="fade">
+    <h2 class="section-title">Ориентиры рынка</h2>
+    <p class="section-sub">Ключевая ставка задаёт потолок: короткие вклады и фонды денежного рынка платят около неё, а накопительные счета без условий — заметно ниже.</p>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="fade">
+    <h2 class="section-title">Мои позиции</h2>
+    <p class="section-sub" id="pos-sub"></p>
+    <div class="pos-grid" id="positions"></div>
+  </section>
+
+  <section class="fade">
+    <h2 class="section-title">Интересное на рынке</h2>
+    <p class="section-sub">Выбирается автоматически каждый день из таблиц ниже: лучшая ставка на короткий срок, на 4–6 месяцев, лучший вклад без условия «новых денег» и лучший накопительный счёт без условий.</p>
+    <div class="hl-grid" id="highlights"></div>
+  </section>
+
+  <section class="fade">
+    <div class="card">
+      <h2 class="section-title">Лучшая ставка по сроку</h2>
+      <p class="section-sub">Максимальная ставка каждого банка на каждый срок среди его вкладов. Пунктир — ключевая ставка ЦБ.</p>
+      <div class="controls">
+        <label class="chk"><input type="checkbox" id="c-nonew"> Без условия «новых денег»</label>
+        <label class="chk"><input type="checkbox" id="c-nofloat"> Без плавающих ставок</label>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="chart-scroll"><svg id="chart" class="chart" role="img" aria-label="Лучшая ставка по вкладам каждого банка по срокам"></svg></div>
+      <p class="chart-note" id="chart-note"></p>
+    </div>
+  </section>
+
+  <section class="fade">
+    <div class="card">
+      <h2 class="section-title">Ставки по вкладам</h2>
+      <p class="section-sub" id="dep-sub"></p>
+      <div class="controls">
+        <div class="seg" id="seg-terms"><button data-v="all" class="on">Все сроки</button><button data-v="focus">2–6 мес</button></div>
+        <div class="seg" id="seg-view"><button data-v="bank" class="on">По банкам</button><button data-v="flat">Единый рейтинг</button></div>
+        <label class="chk"><input type="checkbox" id="t-nonew"> Без «новых денег»</label>
+        <label class="chk"><input type="checkbox" id="t-nofloat"> Без плавающих</label>
+        <label class="chk"><input type="checkbox" id="t-notopup"> Скрыть с пополнением</label>
+      </div>
+      <div class="table-scroll"><table class="dep" id="dep"></table></div>
+      <p class="legend-inline"><span class="badge">новые деньги</span>ставка только на прирост средств в банке · <span class="badge grey">до</span>с надбавкой за уровень обслуживания · <span class="badge grey">плав.</span>привязана к ключевой ставке · <span class="badge warn">акция</span>временное предложение · <b style="color:var(--accent)">синим</b> — лучшая ставка на срок.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Накопительные счета</h2>
+      <p class="section-sub">«Без условий» — что премиальный клиент получает после окончания промо-периода, без трат по карте, инвестиций и зарплаты в банке. «Максимум» — со всеми надбавками.</p>
+      <div class="table-scroll"><table class="sav" id="sav"></table></div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Фонды денежного рынка</h2>
+      <p class="section-sub">Доходность по биржевой цене пая за 7, 30 и 90 дней в годовом выражении, уже за вычетом комиссий фонда. Ориентир — RUSFAR, ставка овернайт-репо, в которую фонды и вкладывают.</p>
+      <div class="table-scroll"><table class="fnd" id="fnd"></table></div>
+    </div>
+  </section>
+
+  <section class="fade">
+    <h2 class="section-title">Изменения ставок</h2>
+    <p class="section-sub">Все изменения в таблицах за последние 45 дней — по сравнению с предыдущим обновлением.</p>
+    <div class="card" id="changes"></div>
+  </section>
+
+  <section class="fade">
+    <h2 class="section-title">Источники и методика</h2>
+    <div class="card">
+      <div class="src-grid" id="sources"></div>
+      <ul class="notes" id="notes" style="margin-top:24px"></ul>
+    </div>
+  </section>
+</main>
+
+<div class="tooltip" id="tt"></div>
+<footer class="wrap" id="footer">Вклады и накопительные счета</footer>
+
+<script>
+/* ================= Helpers ================= */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nf = (v, min = 1, max = 2) => v == null || Number.isNaN(v) ? "—" : v.toLocaleString("ru-RU", { minimumFractionDigits: min, maximumFractionDigits: max });
+const pct = (v, min = 1, max = 2) => v == null ? "—" : `${nf(v, min, max)}%`;
+const pp = v => v == null ? "—" : `${v > 0 ? "+" : v < 0 ? "−" : "±"}${nf(Math.abs(v), 1, 2)} п.п.`;
+const rubM = v => v >= 1e6 ? `${nf(v / 1e6, 0, 1)} млн ₽` : v >= 1e3 ? `${nf(v / 1e3, 0, 0)} тыс. ₽` : `${v} ₽`;
+const dRu = (iso, opt = { day: "numeric", month: "long" }) => iso ? new Date(String(iso).slice(0, 10) + "T12:00:00Z").toLocaleDateString("ru-RU", { ...opt, timeZone: "UTC" }) : "—";
+const dLong = iso => dRu(iso, { day: "numeric", month: "long", year: "numeric" });
+const termLbl = m => `${m} мес`;
+const termsWord = m => m === 1 ? "1 месяц" : m < 5 ? `${m} месяца` : `${m} месяцев`;
+
+let DATA, BANK = {}, SLOT = {};
+const STATE = { chartNoNew: false, chartNoFloat: false, hidden: new Set(), terms: "all", view: "bank", noNew: false, noFloat: false, noTopup: false, sort: null };
+
+const isNewMoney = p => /нов(ые|ых) деньг/i.test(p.variant || "");
+const hasTopup = p => p.topup && !/^нет$/i.test(p.topup);
+const isNewProduct = p => { const s = DATA.seen?.[p.id]; return s && s !== "baseline" && (Date.parse(DATA.date) - Date.parse(s)) / 864e5 <= 21; };
+const deposits = () => DATA.products.filter(p => p.type === "deposit");
+const savings = () => DATA.products.filter(p => p.type === "savings");
+const bankName = id => BANK[id]?.name ?? id;
+const color = id => `var(--s-${id})`;
+
+/* ================= Derived ================= */
+function bestDeposit(terms, filter = () => true, exclude = new Set()) {
+  let best = null;
+  for (const p of deposits().filter(filter)) {
+    if (exclude.has(p.id)) continue;
+    for (const m of terms) {
+      const r = p.rates[m];
+      if (r == null) continue;
+      if (!best || r > best.rate + 1e-9 || (Math.abs(r - best.rate) < 1e-9 && m < best.term)) best = { p, term: m, rate: r };
+    }
+  }
+  return best;
+}
+const realistic = s => s.guaranteed ?? s.rate;
+function bestSavings(exclude = new Set()) {
+  return savings().filter(s => !exclude.has(s.id)).sort((a, b) => realistic(b) - realistic(a))[0];
+}
+function positionView(pos) {
+  if (pos.kind === "fund") {
+    const f = DATA.funds.find(x => x.ticker === pos.ticker);
+    return { pos, fund: f, current: f?.y30 ?? null };
+  }
+  const m = pos.match || {};
+  const cand = savings().filter(s => s.bank === m.bank && (!m.tier || s.tier === m.tier));
+  const s = cand[0];
+  const others = savings().filter(x => x.bank === m.bank && x !== s);
+  return { pos, product: s, others, current: s ? realistic(s) : null };
+}
+
+/* ================= Tooltip ================= */
+const TT = document.getElementById("tt");
+function showTT(html, e) {
+  TT.innerHTML = html; TT.style.opacity = 1;
+  const w = TT.offsetWidth, h = TT.offsetHeight;
+  let x = e.clientX + 16, y = e.clientY + 16;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 16;
+  if (y + h > innerHeight - 8) y = e.clientY - h - 16;
+  TT.style.left = Math.max(8, x) + "px"; TT.style.top = Math.max(8, y) + "px";
+}
+const hideTT = () => { TT.style.opacity = 0; };
+function bindTT(root) {
+  root.querySelectorAll("[data-tt]").forEach(el => {
+    el.addEventListener("mousemove", e => showTT(el.dataset.tt, e));
+    el.addEventListener("mouseleave", hideTT);
+  });
+}
+function productTT(p, m) {
+  const lines = [];
+  lines.push(`<div class="tt-title">${esc(bankName(p.bank))} · ${esc(p.name)}</div>`);
+  lines.push(`<div class="tt-line"><span>${esc(p.variant || "")}${p.tierName ? " · " + esc(p.tierName) : ""}</span></div>`);
+  if (m != null) {
+    lines.push(`<div class="tt-line"><span>${termLbl(m)}</span><b>${pct(p.rates[m])}</b></div>`);
+    if (p.baseRates?.[m] != null) lines.push(`<div class="tt-line"><span>${isNewMoney(p) ? "На «старые» деньги" : "Без надбавок"}</span><b>${pct(p.baseRates[m])}</b></div>`);
+    if (p.monthlyRates?.[m] != null) lines.push(`<div class="tt-line"><span>С ежемесячной выплатой</span><b>${pct(p.monthlyRates[m])}</b></div>`);
+    if (p.spreads?.[m] != null) lines.push(`<div class="tt-line"><span>Спред к ключевой</span><b>${pp(p.spreads[m])}</b></div>`);
+    if (p.limits?.[m]) lines.push(`<div class="tt-line"><span>Лимит</span><b>${esc(p.limits[m])}</b></div>`);
+  }
+  const meta = [p.payout === "monthly" ? "выплата ежемесячно" : "выплата в конце срока", p.topup && `пополнение: ${p.topup}`, p.withdraw && `снятие: ${p.withdraw}`, p.minAmount && `от ${rubM(p.minAmount)}`].filter(Boolean).join(" · ");
+  lines.push(`<div class="tt-note">${esc(meta)}</div>`);
+  if (p.note) lines.push(`<div class="tt-note">${esc(p.note)}</div>`);
+  if (p.stale) lines.push(`<div class="tt-note" style="color:var(--bad)">Данные с ${esc(dRu(DATA.status[p.bank]?.lastOk))} — последнее обновление банка не удалось</div>`);
+  return lines.join("");
+}
+
+/* ================= Renderers ================= */
+function renderStamp() {
+  const st = Object.entries(DATA.status);
+  const bad = st.filter(([, s]) => !s.ok);
+  const upd = new Date(DATA.updated).toLocaleString("ru-RU", { timeZone: "Europe/Moscow", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+  const warn = bad.length ? ` · <span class="warn">не обновились: ${bad.map(([b]) => esc(bankName(b))).join(", ")}</span>` : "";
+  document.getElementById("stamp").innerHTML = `<strong>Обновлено ${upd} МСК</strong> · расчётная сумма ${rubM(DATA.refAmount)} · обновляется каждое утро${warn}`;
+  document.getElementById("footer").textContent = `Вклады и накопительные счета · ${upd} МСК · Не является инвестиционной рекомендацией`;
+}
+
+function renderTiles() {
+  const k = DATA.keyRate, r = DATA.rusfar;
+  const b26 = bestDeposit(DATA.focusTerms);
+  const bs = bestSavings();
+  const t = [];
+  t.push(`<div class="tile"><div class="label">Ключевая ставка</div><div class="name">Банк России</div>
+    <div class="value">${nf(k.value, 2, 2)}<small>%</small></div>
+    <dl class="kv"><div><dt>Действует с</dt><dd>${dLong(k.since)}</dd></div>${k.prev != null ? `<div class="src"><dt>До этого</dt><dd>${pct(k.prev, 2)}</dd></div>` : ""}</dl>
+    <div class="context">cbr.ru · ${dRu(k.date)}</div></div>`);
+  t.push(`<div class="tile"><div class="label">RUSFAR</div><div class="name">Овернайт-репо, Мосбиржа</div>
+    <div class="value">${nf(r.value, 2, 2)}<small>%</small></div>
+    <dl class="kv"><div><dt>Среднее за 30 дней</dt><dd>${pct(r.avg30, 2)}</dd></div><div class="src"><dt>К ключевой</dt><dd>${pp(r.value - k.value)}</dd></div></dl>
+    <div class="context">База доходности фондов денежного рынка · ${dRu(r.date)}</div></div>`);
+  if (b26) t.push(`<div class="tile" data-tt="${esc(productTT(b26.p, b26.term))}"><div class="label">Лучший вклад 2–6 мес <span class="dot" style="background:${color(b26.p.bank)};margin-top:5px"></span></div>
+    <div class="name">${esc(bankName(b26.p.bank))} · ${esc(b26.p.name)}</div>
+    <div class="value">${nf(b26.rate, 1, 2)}<small>%</small></div>
+    <dl class="kv"><div><dt>Срок</dt><dd>${termsWord(b26.term)}</dd></div><div class="src"><dt>Условие</dt><dd>${esc(b26.p.variant)}</dd></div></dl>
+    <div class="context">${pp(b26.rate - k.value)} к ключевой</div></div>`);
+  if (bs) t.push(`<div class="tile"><div class="label">Накопительный без условий <span class="dot" style="background:${color(bs.bank)};margin-top:5px"></span></div>
+    <div class="name">${esc(bankName(bs.bank))} · ${esc(bs.name)}</div>
+    <div class="value">${nf(realistic(bs), 1, 2)}<small>%</small></div>
+    <dl class="kv"><div><dt>Начисление</dt><dd>${esc((bs.accrual || "").split(" (")[0].replace(/^на /, ""))}</dd></div><div class="src"><dt>К ключевой</dt><dd>${pp(realistic(bs) - k.value)}</dd></div></dl>
+    <div class="context">Деньги доступны в любой момент</div></div>`);
+  const el = document.getElementById("tiles");
+  el.innerHTML = t.join(""); bindTT(el);
+}
+
+function renderPositions() {
+  const k = DATA.keyRate.value;
+  const bs = bestSavings();
+  const b3 = bestDeposit([2, 3]);
+  const views = DATA.positions.map(positionView);
+  document.getElementById("pos-sub").textContent = "Для накопительных счетов — ваша ставка рядом с публичной ставкой банка; для фондов — фактическая доходность пая. Внизу каждой карточки — есть ли сейчас вариант лучше при той же ликвидности.";
+  const html = views.map(v => {
+    const P = v.pos;
+    const head = `<div class="bankline"><span class="dot" style="background:${color(P.bank)}"></span>${esc(bankName(P.bank))}<span class="kind">${P.kind === "fund" ? "БПИФ" : "Накопительный"}</span></div>`;
+    if (P.kind === "fund") {
+      const f = v.fund;
+      if (!f) return `<div class="tile pos">${head}<div class="name">${esc(P.label)}</div><div class="value">—</div></div>`;
+      const alt = bs && realistic(bs) - (f.y30 ?? 0) >= 0.5 ? bs : null;
+      return `<div class="tile pos">${head}
+        <div class="name">${esc(f.name)} · ${esc(f.ticker)}</div>
+        <div class="value">${nf(f.y30, 1, 1)}<small>%</small></div>
+        <div class="context">Доходность за 30 дней, годовых</div>
+        <dl class="kv">
+          <div><dt>За 7 дней</dt><dd>${pct(f.y7, 1, 1)}</dd></div>
+          <div><dt>За 90 дней</dt><dd>${pct(f.y90, 1, 1)}</dd></div>
+          <div class="src"><dt>К RUSFAR (30 дн.)</dt><dd>${pp(f.y30 - DATA.rusfar.avg30)}</dd></div>
+          <div class="src"><dt>Пай</dt><dd>${nf(f.price, 2, 4)} ₽ · ${dRu(f.date, { day: "numeric", month: "short" })}</dd></div>
+        </dl>
+        ${alt ? `<div class="verdict">Накопительный <b>${esc(bankName(alt.bank))} «${esc(alt.name)}»</b> без условий даёт <b>${pct(realistic(alt))}</b> — ${pp(realistic(alt) - f.y30)} к фонду.</div>`
+              : `<div class="verdict ok">На уровне рынка: ${pp(f.y30 - k)} к ключевой. Лучший накопительный без условий — ${pct(realistic(bs))} (${esc(bankName(bs.bank))}).</div>`}
+        ${f.stale ? `<div class="flag">Цена не обновилась: ${esc(f.error || "")}</div>` : ""}
+      </div>`;
+    }
+    const s = v.product;
+    if (!s) return `<div class="tile pos">${head}<div class="name">${esc(P.label)}</div><div class="value">—</div><div class="flag">Продукт банка не найден в данных</div></div>`;
+    const tierAlt = v.others.map(o => `${esc(o.tierName)} — ${pct(o.rate)}`).join(", ");
+    const gap = P.userRate != null ? P.userRate - realistic(s) : 0;
+    let flag = "";
+    if (P.userRate != null && P.userRate > s.rate + 0.01) flag = `Публичная ставка ${esc(s.tierName)} — ${pct(s.rate)}${tierAlt ? ` (${tierAlt})` : ""}. ${pct(P.userRate)} нет в текущих тарифах — вероятно, персональное предложение или старый тариф; проверьте в приложении.`;
+    else if (P.userRate != null && gap > 0.25) flag = `${pct(P.userRate)} — это ${s.promoRate ? "приветственная ставка или " : ""}ставка со всеми надбавками. Без условий ${esc(s.tierName)} получает ${pct(realistic(s))}.`;
+    const mine = P.userRate ?? realistic(s);
+    const alt = bs && bs.id !== s.id && realistic(bs) - mine >= 0.25 ? bs : null;
+    return `<div class="tile pos" data-tt="${esc(`<div class="tt-title">${esc(s.name)}</div><div class="tt-note">${esc(s.conditions || "")}</div>`)}">${head}
+      <div class="name">${esc(P.label)}</div>
+      <div class="value">${nf(mine, 1, 2)}<small>%</small></div>
+      <div class="context">${P.userRate != null ? "Ваша ставка" : "Ставка без условий"}</div>
+      <dl class="kv">
+        <div><dt>Без условий (${esc(s.tierName)})</dt><dd>${pct(realistic(s))}</dd></div>
+        <div><dt>Максимум</dt><dd>${pct(s.rate)}</dd></div>
+        <div class="src"><dt>К ключевой</dt><dd>${pp(mine - k)}</dd></div>
+        <div class="src"><dt>Начисление</dt><dd>${esc((s.accrual || "").split(",")[0].replace(/^на /, ""))}</dd></div>
+      </dl>
+      ${flag ? `<div class="flag">${flag}</div>` : ""}
+      ${alt ? `<div class="verdict">Выгоднее без условий: <b>${esc(bankName(alt.bank))} «${esc(alt.name)}» — ${pct(realistic(alt))}</b> (${pp(realistic(alt) - mine)}).${b3 ? ` Если деньги не нужны 2–3 месяца — вклад до ${pct(b3.rate)} (${esc(bankName(b3.p.bank))}).` : ""}</div>`
+            : `<div class="verdict ok">Сильнее любого накопительного без условий на рынке (${pct(realistic(bs))}).</div>`}
+    </div>`;
+  });
+  const el = document.getElementById("positions");
+  el.innerHTML = html.join(""); bindTT(el);
+}
+
+function renderHighlights() {
+  const used = new Set(), k = DATA.keyRate.value;
+  const myBest = Math.max(...DATA.positions.map(positionView).map(v => v.pos.userRate ?? v.current ?? 0));
+  const cards = [];
+  const add = (kind, title, why, b) => { if (!b) return; used.add(b.p.id); cards.push({ kind, title, why, ...b }); };
+  add("dep", "Короткий срок · 2–3 мес", "Самая высокая ставка, если деньги понадобятся через 2–3 месяца.", bestDeposit([2, 3]));
+  add("dep", "Оптимум · 4–6 мес", "Фиксирует ставку на полгода — полезно, если ключевую начнут снижать.", bestDeposit([4, 5, 6], () => true, used));
+  add("dep", "Без «новых денег»", "Можно открыть на деньги, которые уже лежат в этом банке.", bestDeposit([3, 4, 5, 6], p => !isNewMoney(p) && !p.floating, used));
+  const s = bestSavings();
+  const html = cards.map(c => {
+    const p = c.p;
+    const badges = [isNewMoney(p) && `<span class="badge">новые деньги</span>`, p.upTo && `<span class="badge grey">до</span>`, p.promo && `<span class="badge warn">акция</span>`, isNewProduct(p) && `<span class="badge">новинка</span>`].filter(Boolean).join("");
+    return `<div class="tile hl" data-tt="${esc(productTT(p, c.term))}">
+      <div class="label">${esc(c.title)}</div>
+      <div class="name"><span class="dot" style="display:inline-block;background:${color(p.bank)};margin-right:6px"></span>${esc(bankName(p.bank))} · ${esc(p.name)}</div>
+      <div class="value">${nf(c.rate, 1, 2)}<small>%</small></div>
+      <div class="context">${termsWord(c.term)} · ${esc(p.variant)} ${badges}</div>
+      <div class="why">${esc(c.why)}</div>
+      <div class="cond">${esc([p.payout === "monthly" ? "Выплата ежемесячно" : "Выплата в конце срока", p.minAmount && `от ${rubM(p.minAmount)}`, p.limits?.[c.term]].filter(Boolean).join(" · "))}</div>
+      <div class="spacer"></div>
+      <div class="cmp">${pp(c.rate - k)} к ключевой · <b>${pp(c.rate - myBest)}</b> к вашей лучшей позиции</div>
+    </div>`;
+  });
+  if (s) html.push(`<div class="tile hl" data-tt="${esc(`<div class="tt-title">${esc(bankName(s.bank))} · ${esc(s.name)}</div><div class="tt-note">${esc(s.conditions || "")}</div>`)}">
+      <div class="label">Накопительный без условий</div>
+      <div class="name"><span class="dot" style="display:inline-block;background:${color(s.bank)};margin-right:6px"></span>${esc(bankName(s.bank))} · ${esc(s.name)}</div>
+      <div class="value">${nf(realistic(s), 1, 2)}<small>%</small></div>
+      <div class="context">${esc(s.accrual || "")}</div>
+      <div class="why">Деньги доступны в любой день, без трат по карте и промо-периодов.</div>
+      <div class="cond">${esc(s.conditions || "")}</div>
+      <div class="spacer"></div>
+      <div class="cmp">${pp(realistic(s) - k)} к ключевой · <b>${pp(realistic(s) - myBest)}</b> к вашей лучшей позиции</div>
+    </div>`);
+  const el = document.getElementById("highlights");
+  el.innerHTML = html.join(""); bindTT(el);
+}
+
+/* ---------- Chart ---------- */
+function chartSeries() {
+  const f = p => (!STATE.chartNoNew || !isNewMoney(p)) && (!STATE.chartNoFloat || !p.floating);
+  return DATA.banks.map(b => {
+    const pts = DATA.terms.map(m => {
+      const best = bestDeposit([m], p => p.bank === b.id && f(p));
+      return best ? { m, r: best.rate, p: best.p } : null;
+    }).filter(Boolean);
+    return { bank: b.id, pts };
+  });
+}
+// legend / colour slot order (validated categorical order: blue, orange, aqua, yellow, magenta, green)
+const SLOT_ORDER = ["vtb", "psb", "sber", "tbank", "alfa", "gpb"];
+function renderLegend() {
+  const el = document.getElementById("legend");
+  el.innerHTML = SLOT_ORDER.filter(id => BANK[id]).map(id => `<button data-b="${id}" class="${STATE.hidden.has(id) ? "off" : ""}" aria-pressed="${!STATE.hidden.has(id)}"><span class="sw" style="background:${color(id)}"></span>${esc(bankName(id))}</button>`).join("")
+    + `<span style="display:inline-flex;align-items:center;gap:7px"><span class="sw-ref"></span>Ключевая · ${pct(DATA.keyRate.value, 2)}</span>`;
+  el.querySelectorAll("button").forEach(b => b.onclick = () => { const id = b.dataset.b; STATE.hidden.has(id) ? STATE.hidden.delete(id) : STATE.hidden.add(id); renderLegend(); renderChart(); });
+}
+function renderChart() {
+  const svg = document.getElementById("chart");
+  const W = 1040, H = 400, L = 48, R = 24, T = 18, B = 40;
+  const series = chartSeries().filter(s => !STATE.hidden.has(s.bank) && s.pts.length);
+  const all = series.flatMap(s => s.pts.map(p => p.r)).concat([DATA.keyRate.value]);
+  let lo = Math.floor(Math.min(...all) - 0.5), hi = Math.ceil(Math.max(...all) + 0.3);
+  if (hi - lo < 3) lo = hi - 3;
+  const n = DATA.terms.length;
+  const x = i => L + (W - L - R) * (i / (n - 1));
+  const y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo));
+  const ix = m => DATA.terms.indexOf(m);
+  const g = [];
+  for (let v = lo; v <= hi + 1e-9; v += (hi - lo > 6 ? 2 : 1)) g.push(`<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)" stroke-width="1"/><text x="${L - 10}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="var(--muted)">${v}%</text>`);
+  DATA.terms.forEach((m, i) => {
+    const focus = DATA.focusTerms.includes(m);
+    g.push(`<text x="${x(i)}" y="${H - 14}" text-anchor="middle" font-size="12" fill="${focus ? "var(--ink-2)" : "var(--muted)"}" font-weight="${focus ? 600 : 400}">${termLbl(m)}</text>`);
+  });
+  const f0 = ix(DATA.focusTerms[0]), f1 = ix(DATA.focusTerms.at(-1));
+  const band = `<rect x="${x(f0) - 18}" y="${T}" width="${x(f1) - x(f0) + 36}" height="${H - T - B}" rx="8" fill="var(--accent-softer)"/>`;
+  const key = `<line x1="${L}" x2="${W - R}" y1="${y(DATA.keyRate.value)}" y2="${y(DATA.keyRate.value)}" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+  const lines = series.map(s => {
+    const d = s.pts.map((p, i) => `${i ? "L" : "M"}${x(ix(p.m)).toFixed(1)},${y(p.r).toFixed(1)}`).join("");
+    const dots = s.pts.map(p => `<circle cx="${x(ix(p.m))}" cy="${y(p.r)}" r="4" fill="${color(s.bank)}" stroke="var(--card)" stroke-width="2"/>`).join("");
+    return `<g data-b="${s.bank}"><path d="${d}" fill="none" stroke="${color(s.bank)}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${dots}</g>`;
+  }).join("");
+  const cross = `<line id="xh" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-width="1" opacity="0"/>`;
+  const hits = DATA.terms.map((m, i) => `<rect class="hit" data-m="${m}" x="${x(i) - (W - L - R) / (n - 1) / 2}" y="${T}" width="${(W - L - R) / (n - 1)}" height="${H - T - B}" fill="transparent"/>`).join("");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = band + g.join("") + key + cross + lines + hits;
+  const xh = svg.querySelector("#xh");
+  svg.querySelectorAll(".hit").forEach(r => {
+    r.addEventListener("mousemove", e => {
+      const m = +r.dataset.m;
+      xh.setAttribute("x1", x(ix(m))); xh.setAttribute("x2", x(ix(m))); xh.setAttribute("opacity", 0.5);
+      const rows = series.map(s => ({ s, p: s.pts.find(p => p.m === m) })).filter(o => o.p).sort((a, b) => b.p.r - a.p.r);
+      showTT(`<div class="tt-title">${termsWord(m)}</div>` + rows.map(o => `<div class="tt-line"><span><span class="dot" style="background:${color(o.s.bank)}"></span>${esc(bankName(o.s.bank))} <span style="color:var(--muted)">${esc(o.p.p.name)}</span></span><b>${pct(o.p.r)}</b></div>`).join("")
+        + `<div class="tt-note">Ключевая ${pct(DATA.keyRate.value, 2)}${rows.length < series.length ? " · у остальных банков нет такого срока" : ""}</div>`, e);
+    });
+    r.addEventListener("mouseleave", () => { xh.setAttribute("opacity", 0); hideTT(); });
+  });
+  const missing = DATA.banks.filter(b => !STATE.hidden.has(b.id) && !series.find(s => s.bank === b.id)).map(b => b.name);
+  document.getElementById("chart-note").textContent = `Наведите на срок, чтобы увидеть все банки. Линия проходит только через сроки, которые банк предлагает (у ВТБ и ПСБ нет вкладов на 1 и 5 мес).${missing.length ? " Нет данных: " + missing.join(", ") + "." : ""}`;
+}
+
+/* ---------- Deposits table ---------- */
+function depRows() {
+  return deposits().filter(p => (!STATE.noNew || !isNewMoney(p)) && (!STATE.noFloat || !p.floating) && (!STATE.noTopup || !hasTopup(p)));
+}
+function renderDeposits() {
+  const terms = STATE.terms === "focus" ? DATA.focusTerms : DATA.terms;
+  let rows = depRows();
+  const best = Object.fromEntries(terms.map(m => [m, Math.max(...rows.map(p => p.rates[m] ?? -1))]));
+  const tableBest = p => Math.max(...terms.map(m => p.rates[m] ?? -1));
+  document.getElementById("dep-sub").innerHTML = `Ставки для премиальных клиентов при сумме <b>${rubM(DATA.refAmount)}</b>, выплата в конце срока, открытие онлайн, если не указано иное. Колонки <b>2–6 мес</b> выделены. Наведите на ставку — условия, ставка без надбавок и лимиты.`;
+  const sortTerm = STATE.sort;
+  const cmp = (a, b) => sortTerm ? (b.rates[sortTerm] ?? -1) - (a.rates[sortTerm] ?? -1) : tableBest(b) - tableBest(a);
+  const head = `<thead><tr><th>${STATE.view === "flat" ? "Банк · вклад" : "Вклад"}</th>${terms.map(m => `<th class="sortable ${DATA.focusTerms.includes(m) ? "focus" : ""} ${sortTerm === m ? "sorted" : ""}" data-m="${m}">${termLbl(m)}<span class="arrow">▼</span></th>`).join("")}<th>Выплата</th><th>Сумма от</th></tr></thead>`;
+  const rowHtml = (p, showBank) => {
+    const badges = [isNewMoney(p) && `<span class="badge">новые деньги</span>`, p.upTo && `<span class="badge grey">до</span>`, p.floating && `<span class="badge grey">плав.</span>`, p.promo && `<span class="badge warn">акция</span>`, isNewProduct(p) && `<span class="badge">новинка</span>`, p.stale && `<span class="badge warn">устарело</span>`].filter(Boolean).join("");
+    const cells = terms.map(m => {
+      const r = p.rates[m], foc = DATA.focusTerms.includes(m) ? " focus" : "";
+      if (r == null) return `<td class="na${foc}">—</td>`;
+      const cls = Math.abs(r - best[m]) < 1e-9 ? " best" : "";
+      return `<td class="${foc}${cls}" data-tt="${esc(productTT(p, m))}">${nf(r, 1, 2)}</td>`;
+    }).join("");
+    return `<tr class="${p.stale ? "stale" : ""}"><td><div class="pn"><span class="p1">${showBank ? `<span class="dot" style="display:inline-block;background:${color(p.bank)};margin-right:7px;vertical-align:1px"></span>${esc(bankName(p.bank))} · ` : ""}${esc(p.name)}</span><span class="p2">${esc(p.variant || "")}${p.tierName && showBank ? " · " + esc(p.tierName) : ""} ${badges}</span></div></td>${cells}
+      <td class="na" style="color:var(--ink-2)">${p.payout === "monthly" ? "ежемес." : "в конце"}</td><td class="na" style="color:var(--ink-2)">${p.minAmount ? rubM(p.minAmount) : "—"}</td></tr>`;
+  };
+  let body = "";
+  if (STATE.view === "flat") body = rows.filter(p => terms.some(m => p.rates[m] != null)).sort(cmp).map(p => rowHtml(p, true)).join("");
+  else for (const b of DATA.banks) {
+    const items = rows.filter(p => p.bank === b.id).sort(cmp);
+    const st = DATA.status[b.id];
+    if (!items.length && !st) continue;
+    const tiers = [...new Set(items.map(p => p.tierName))].join(" · ") || b.tiers;
+    body += `<tr class="grp"><td colspan="${terms.length + 3}"><span class="dot" style="background:${color(b.id)}"></span><span class="gname">${esc(b.full)}</span><span class="gtier">${esc(tiers)}${st && !st.ok ? ` · <span style="color:var(--bad)">не обновилось, данные с ${esc(dRu(st.lastOk))}</span>` : ""}</span></td></tr>`;
+    body += items.map(p => rowHtml(p, false)).join("") || `<tr><td colspan="${terms.length + 3}" class="na" style="text-align:left">Нет вкладов по выбранным фильтрам</td></tr>`;
+  }
+  const el = document.getElementById("dep");
+  el.innerHTML = head + `<tbody>${body}</tbody>`;
+  el.querySelectorAll("th.sortable").forEach(th => th.onclick = () => { const m = +th.dataset.m; STATE.sort = STATE.sort === m ? null : m; renderDeposits(); });
+  bindTT(el);
+}
+
+function renderSavings() {
+  const list = savings().slice().sort((a, b) => realistic(b) - realistic(a));
+  const bestG = Math.max(...list.map(realistic)), bestMax = Math.max(...list.map(s => s.rate));
+  const mine = new Set(DATA.positions.filter(p => p.kind === "savings").map(p => positionView(p).product?.id));
+  const head = `<thead><tr><th>Банк · счёт</th><th>Без условий</th><th>Максимум</th><th>Промо</th><th style="text-align:left">Начисление</th><th style="text-align:left">Условия</th></tr></thead>`;
+  const body = list.map(s => `<tr class="${s.stale ? "stale" : ""}">
+    <td><div class="pn"><span class="p1"><span class="dot" style="display:inline-block;background:${color(s.bank)};margin-right:7px;vertical-align:1px"></span>${esc(bankName(s.bank))} · ${esc(s.name)}</span><span class="p2">${esc(s.tierName)}${mine.has(s.id) ? ` <span class="badge">ваш</span>` : ""}${s.newClientsOnly ? ` <span class="badge grey">новым клиентам</span>` : ""}${s.stale ? ` <span class="badge warn">устарело</span>` : ""}${s.upcoming ? ` <span class="badge warn">${esc(s.upcoming)}</span>` : ""}</span></div></td>
+    <td class="${Math.abs(realistic(s) - bestG) < 1e-9 ? "best" : "top"}">${pct(realistic(s))}</td>
+    <td class="${Math.abs(s.rate - bestMax) < 1e-9 ? "best" : ""}">${pct(s.rate)}</td>
+    <td class="na">${s.promoRate && s.promoRate > realistic(s) ? `${pct(s.promoRate)}<span class="mini">${s.promoMonths ? termsWord(s.promoMonths) : ""}</span>` : "—"}</td>
+    <td class="txt" style="min-width:150px">${esc(s.accrual || "")}</td>
+    <td class="txt">${esc(s.conditions || "")}</td></tr>`).join("");
+  document.getElementById("sav").innerHTML = head + `<tbody>${body}</tbody>`;
+}
+
+function renderFunds() {
+  const mine = new Set(DATA.positions.filter(p => p.kind === "fund").map(p => p.ticker));
+  const list = DATA.funds.slice().sort((a, b) => (b.y30 ?? 0) - (a.y30 ?? 0));
+  const best = k => Math.max(...list.map(f => f[k] ?? -1));
+  const b7 = best("y7"), b30 = best("y30"), b90 = best("y90");
+  const head = `<thead><tr><th>Фонд</th><th>Пай, ₽</th><th>7 дней</th><th>30 дней</th><th>90 дней</th><th>К RUSFAR, 30 дн.</th><th>Оборот в день</th></tr></thead>`;
+  const body = list.map(f => `<tr class="${f.stale ? "stale" : ""}">
+    <td><div class="pn"><span class="p1"><span class="dot" style="display:inline-block;background:${color(f.bank)};margin-right:7px;vertical-align:1px"></span>${esc(f.ticker)} · ${esc(f.name)}</span><span class="p2">${esc(f.manager)}${mine.has(f.ticker) ? ` <span class="badge">ваш</span>` : ""}</span></div></td>
+    <td>${nf(f.price, 2, 4)}<span class="mini">${dRu(f.date, { day: "numeric", month: "short" })}</span></td>
+    <td class="${f.y7 === b7 ? "best" : ""}">${pct(f.y7, 1, 1)}</td><td class="${f.y30 === b30 ? "best" : "top"}">${pct(f.y30, 1, 1)}</td><td class="${f.y90 === b90 ? "best" : ""}">${pct(f.y90, 1, 1)}</td>
+    <td class="${f.y30 - DATA.rusfar.avg30 >= 0 ? "" : "na"}">${pp(f.y30 - DATA.rusfar.avg30)}</td>
+    <td class="na">${f.turnover ? (f.turnover >= 1e9 ? `${nf(f.turnover / 1e9, 1, 1)} млрд ₽` : `${nf(f.turnover / 1e6, 0, 0)} млн ₽`) : "—"}</td></tr>`).join("");
+  document.getElementById("fnd").innerHTML = head + `<tbody>${body}</tbody>`;
+}
+
+function renderChanges() {
+  const list = (DATA.changes || []).slice().reverse();
+  const el = document.getElementById("changes");
+  if (!list.length) { el.innerHTML = `<p class="empty">Пока изменений нет — отслеживаем с ${dLong(DATA.baselineDate)}. Каждое изменение ставки в таблицах появится здесь.</p>`; return; }
+  el.innerHTML = list.slice(0, 60).map(c => `<div class="chg"><span class="cd">${dRu(c.date, { day: "numeric", month: "short" })}</span>
+    <span><span class="dot" style="display:inline-block;background:${color(c.bank)};margin-right:7px"></span><b>${esc(bankName(c.bank))}</b> · ${esc(c.name)}${c.term ? ` · ${termLbl(c.term)}` : ""}</span>
+    <span class="cv">${pct(c.from)} → <span class="${c.to > c.from ? "up" : "down"}">${pct(c.to)}</span></span></div>`).join("");
+}
+
+function renderSources() {
+  const SRC = {
+    sber: "Листовка «Вклады и счета для премиальных клиентов» (PDF), распознаётся OCR",
+    vtb: "Сборник тарифов по вкладам (XLSX) с vtb.ru",
+    tbank: "Публичный API tbank.ru: СмартВклад и Накопительный счёт",
+    alfa: "Сайт alfabank.ru",
+    gpb: "JSON-бэкенд gazprombank.ru: калькуляторы вкладов и счета",
+    psb: "Таблицы ставок на страницах psbank.ru",
+  };
+  document.getElementById("sources").innerHTML = DATA.banks.map(b => {
+    const s = DATA.status[b.id] || {};
+    const link = DATA.products.find(p => p.bank === b.id)?.source;
+    return `<div class="src-item"><span class="dot" style="display:inline-block;background:${color(b.id)};margin-right:7px"></span><b>${esc(b.full)}</b> · <span class="${s.ok ? "ok" : "err"}">${s.ok ? "обновлено" : "ошибка"}</span>
+      <span class="m">${esc(SRC[b.id] || "")}${link ? ` · <a href="${esc(link)}" target="_blank" rel="noopener">сайт банка</a>` : ""}</span>
+      ${s.ok ? (s.warnings ? `<span class="m" style="color:var(--bad)">Частично: ${esc(s.warnings.join("; "))}</span>` : "") : `<span class="m" style="color:var(--bad)">${esc(s.error || "")}${s.lastOk ? ` · показаны данные с ${esc(dRu(s.lastOk))}` : ""}</span>`}</div>`;
+  }).join("") + `<div class="src-item"><b>Ключевая ставка</b> · cbr.ru<span class="m">RUSFAR и цены фондов — ISS Московской биржи</span></div>`;
+  const notes = [
+    `<b>Премиальный уровень.</b> Сбер — СберПервый; ВТБ — Привилегия (с надбавкой уровня «Изумруд» программы «Расти с ВТБ»); Т-Банк — Premium и Private (на вклады надбавки за уровень сейчас нет, на накопительный счёт — есть); Альфа — Премиум и Alfa Only; Газпромбанк — Премиум (+3 п.п. на «В Плюсе»); ПСБ — Orange Premium Club (отдельной сетки по вкладам нет, действуют публичные ставки).`,
+    `<b>Сумма.</b> Где ставка зависит от суммы, берётся уровень для ${rubM(DATA.refAmount)}. Срок в днях переводится в месяцы: 91 день — 3 мес, 181 — 6 мес, 367 — 12 мес.`,
+    `<b>«Новые деньги»</b> — повышенная ставка только на прирост остатка в банке по сравнению с прошлым периодом (у каждого банка своё окно: 30 дней — 3 месяца). На уже лежащие в банке деньги действует ставка без надбавки — она в подсказке ячейки.`,
+    `<b>Плавающие вклады</b> пересчитываются от текущей ключевой: ставка = ключевая + спред банка. При снижении ключевой они подешевеют, а фиксированные вклады — нет.`,
+    `<b>Фонды денежного рынка</b> — доходность по биржевой цене пая (простое годовое выражение, act/365). Комиссия фонда уже учтена в цене. Доход по фондам облагается НДФЛ при продаже; по вкладам и счетам — процентный доход сверх необлагаемого лимита.`,
+    `<b>Мои позиции.</b> Ставки 13% (Сбер) и 11% (Т-Банк) — по вашим данным; публичные тарифы банков показаны рядом. Суммы позиций на странице не хранятся.`,
+    `Данные собираются автоматически с сайтов банков; перед открытием вклада сверьте условия в приложении банка. Не является инвестиционной рекомендацией.`,
+  ].concat((DATA.notes || []).map(esc));
+  document.getElementById("notes").innerHTML = notes.map(n => `<li>${n}</li>`).join("");
+}
+
+/* ================= Controls ================= */
+function bindControls() {
+  const seg = (id, key, fn) => document.querySelectorAll(`#${id} button`).forEach(b => b.onclick = () => {
+    STATE[key] = b.dataset.v; document.querySelectorAll(`#${id} button`).forEach(x => x.classList.toggle("on", x === b)); fn();
+  });
+  seg("seg-terms", "terms", () => { if (STATE.terms === "focus" && STATE.sort && !DATA.focusTerms.includes(STATE.sort)) STATE.sort = null; renderDeposits(); });
+  seg("seg-view", "view", renderDeposits);
+  const chk = (id, key, fn) => { const el = document.getElementById(id); el.checked = STATE[key]; el.onchange = () => { STATE[key] = el.checked; fn(); }; };
+  chk("t-nonew", "noNew", renderDeposits); chk("t-nofloat", "noFloat", renderDeposits); chk("t-notopup", "noTopup", renderDeposits);
+  chk("c-nonew", "chartNoNew", renderChart); chk("c-nofloat", "chartNoFloat", renderChart);
+}
+
+/* ================= Boot ================= */
+fetch("data.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+  DATA = d;
+  DATA.banks.forEach(b => BANK[b.id] = b);
+  renderStamp(); renderTiles(); renderPositions(); renderHighlights();
+  renderLegend(); renderChart(); renderDeposits(); renderSavings(); renderFunds(); renderChanges(); renderSources();
+  bindControls();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.05 });
+  document.querySelectorAll(".fade").forEach(el => io.observe(el));
+}).catch(e => {
+  document.getElementById("loading").textContent = "Не удалось загрузить data.json: " + e.message;
+  document.querySelectorAll(".fade").forEach(el => el.classList.add("in"));
+});
+</script>
+</body>
+</html>

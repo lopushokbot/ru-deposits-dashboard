@@ -1,0 +1,26 @@
+{
+ "refAmount": 3000000,
+ "terms": [1, 2, 3, 4, 5, 6, 9, 12],
+ "focusTerms": [2, 3, 4, 5, 6],
+ "banks": [
+  { "id": "sber",  "name": "Сбер",        "full": "Сбербанк",      "tiers": "СберПервый" },
+  { "id": "vtb",   "name": "ВТБ",         "full": "ВТБ",           "tiers": "Привилегия" },
+  { "id": "tbank", "name": "Т-Банк",      "full": "Т-Банк",        "tiers": "Premium · Private" },
+  { "id": "alfa",  "name": "Альфа",       "full": "Альфа-Банк",    "tiers": "Премиум · Only" },
+  { "id": "gpb",   "name": "Газпромбанк", "full": "Газпромбанк",   "tiers": "Премиум" },
+  { "id": "psb",   "name": "ПСБ",         "full": "ПСБ",           "tiers": "Orange Premium Club" }
+ ],
+ "funds": [
+  { "ticker": "SBMM", "name": "Первая – Сберегательный", "manager": "Сбер (УК «Первая»)", "bank": "sber" },
+  { "ticker": "AKMM", "name": "Альфа-Капитал Денежный рынок", "manager": "Альфа-Капитал", "bank": "alfa" },
+  { "ticker": "TMON", "name": "Т-Капитал Денежный рынок", "manager": "Т-Капитал", "bank": "tbank" },
+  { "ticker": "LQDT", "name": "ВТБ Ликвидность", "manager": "ВТБ Капитал Управление активами", "bank": "vtb" }
+ ],
+ "positions": [
+  { "id": "sber-sa", "label": "СберПервый Накопительный счёт", "bank": "sber", "kind": "savings", "userRate": 13, "match": { "bank": "sber", "type": "savings" } },
+  { "id": "sbmm", "label": "БПИФ денежного рынка Сбера", "bank": "sber", "kind": "fund", "ticker": "SBMM" },
+  { "id": "akmm", "label": "БПИФ денежного рынка Альфы", "bank": "alfa", "kind": "fund", "ticker": "AKMM" },
+  { "id": "tbank-sa", "label": "Т-Банк Накопительный счёт", "bank": "tbank", "kind": "savings", "userRate": 11, "match": { "bank": "tbank", "type": "savings", "tier": "premium" } },
+  { "id": "tmon", "label": "БПИФ денежного рынка Т-Банка", "bank": "tbank", "kind": "fund", "ticker": "TMON" }
+ ]
+}

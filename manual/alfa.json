@@ -1,0 +1,40 @@
+{
+ "asOf": "2026-11-26",
+ "staleAfterDays": 14,
+ "why": "alfabank.ru закрыт антибот-защитой (ServicePipe), robots.txt запрещает /api/*. Ставки вносятся вручную по официальным тарифам банка.",
+ "sources": [
+  "https://alfabank.ru/make-money/deposits/new-money/",
+  "https://alfabank.servicecdn.ru/site-upload/f2/57/2363/deposits_alfa_24112026.pdf",
+  "https://alfabank.servicecdn.ru/site-upload/43/7a/2363/alfa_new_23112026.pdf"
+ ],
+ "tier": "only",
+ "tierName": "Alfa Only",
+ "keyRateAtEntry": 14,
+ "products": [
+  { "type": "deposit", "name": "Альфа-Вклад Новые деньги", "variant": "Новые деньги", "amount": "от 1 млн ₽",
+    "rates": { "2": 12.5, "3": 13.8, "4": 13.8, "5": 13.8, "6": 13.8, "7": 13.2, "8": 13.2, "9": 13.2, "10": 13.2, "11": 13.2, "12": 13.2 },
+    "baseRates": { "2": 11.3, "3": 12.51, "4": 12.6, "5": 12.61, "6": 12.6, "7": 12.0, "8": 12.0, "9": 12.0, "10": 12.0, "11": 12.0, "12": 12.0 },
+    "payout": "monthly", "capitalization": "optional", "topup": "нет", "withdraw": "нет", "minAmount": 10000,
+    "note": "Новые деньги — не было на вкладах и счетах Альфы последние 60 дней; ставка = база + надбавка × доля новых денег. Ставки при капитализации, с выплатой на счёт немного ниже. Без пролонгации",
+    "source": "https://alfabank.ru/make-money/deposits/new-money/" },
+  { "type": "deposit", "name": "Альфа-Вклад Максимальный", "variant": "Без пополнения", "amount": "1–5 млн ₽",
+    "rates": { "1": 10.0, "2": 12.4, "3": 13.7, "4": 13.7, "5": 13.7, "6": 13.7, "7": 13.1, "8": 13.1, "9": 13.1, "10": 13.1, "11": 13.1, "12": 13.1 },
+    "payout": "monthly", "capitalization": "optional", "topup": "нет", "withdraw": "нет", "minAmount": 50000,
+    "note": "Условие новых денег банк не публикует. Ставки при капитализации. Пролонгация — в базовый Альфа-Вклад",
+    "source": "https://alfabank.ru/make-money/deposits/alfa/" },
+  { "type": "deposit", "name": "Альфа-Вклад", "variant": "Без пополнения и снятия", "amount": "от 1 млн ₽",
+    "rates": { "1": 10.0, "2": 11.7, "3": 13.01, "4": 13.01, "5": 13.01, "6": 13.0, "9": 12.4, "12": 12.4 },
+    "payout": "monthly", "capitalization": "optional", "topup": "нет", "withdraw": "нет", "minAmount": 10000,
+    "note": "Базовый вклад без условий. Ставки при капитализации",
+    "source": "https://alfabank.ru/make-money/deposits/alfa-deposit/" },
+  { "type": "deposit", "name": "Альфа-Вклад Ключевой", "variant": "Плавающая ставка", "amount": "1–5 млн ₽", "floating": true,
+    "rates": { "3": 12.89, "4": 12.95, "6": 13.62, "9": 13.85, "12": 14.09 },
+    "payout": "monthly", "capitalization": "optional", "topup": "нет", "withdraw": "нет", "minAmount": 10000,
+    "note": "Ключевая ставка ЦБ − 1,25 п.п. (3–4 мес) / − 0,75 п.п. (6–12 мес) для Alfa Only; при капитализации эффективно выше. Пересчитывается при изменении ключевой",
+    "source": "https://alfabank.ru/make-money/deposits/alfa-key-deposit/" },
+  { "type": "savings", "name": "Альфа-Счёт", "rate": 15, "guaranteed": 9, "promoRate": 15, "promoMonths": 2,
+    "accrual": "на минимальный остаток за месяц, выплата ежемесячно", "capitalization": "monthly",
+    "conditions": "15% первые 2 мес. (для открытых и пополненных 23.11–30.12.2026 — до 31.01.2027), если 90 дней не было Альфа-Счёта с остатком; надбавки на сумму до 10 млн ₽. Далее 9% база Alfa Only; 12% при покупках от 20 тыс. ₽/мес, 12,5% — от 100 тыс. ₽",
+    "source": "https://alfabank.ru/make-money/savings-account/alfa/" }
+ ]
+}
