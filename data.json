@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T10:24:10.496Z",
+ "updated": "2026-11-26T10:31:42.945Z",
  "date": "2026-11-26",
  "refAmount": 3000000,
  "terms": [
@@ -1544,7 +1544,8 @@
    "tier": "private",
    "tierName": "Private",
    "type": "savings",
-   "name": "ТПН 8.0 (Рубли РФ)",
+   "name": "Накопительный счёт",
+   "tariff": "ТПН 8.0 (Рубли РФ)",
    "rate": 10,
    "baseRate": 6,
    "accrual": "на ежедневный остаток, выплата раз в месяц",
@@ -1552,14 +1553,15 @@
    "conditions": "без лимита суммы, снятие без потери процентов",
    "source": "https://www.tbank.ru/savings/saving-account/",
    "guaranteed": 10,
-   "id": "tbank|savings|тпн-8-0-рубли-рф|private"
+   "id": "tbank|savings|накопительный-счёт|private"
   },
   {
    "bank": "tbank",
    "tier": "premium",
    "tierName": "Premium",
    "type": "savings",
-   "name": "ТПН 8.0 (Рубли РФ)",
+   "name": "Накопительный счёт",
+   "tariff": "ТПН 8.0 (Рубли РФ)",
    "rate": 9,
    "baseRate": 6,
    "accrual": "на ежедневный остаток, выплата раз в месяц",
@@ -1567,7 +1569,7 @@
    "conditions": "без лимита суммы, снятие без потери процентов",
    "source": "https://www.tbank.ru/savings/saving-account/",
    "guaranteed": 9,
-   "id": "tbank|savings|тпн-8-0-рубли-рф|premium"
+   "id": "tbank|savings|накопительный-счёт|premium"
   },
   {
    "bank": "alfa",
@@ -2014,11 +2016,10 @@
    "source": "https://www.psbank.ru/personal/savingsaccount/accentpercent",
    "name": "Акцент на процент",
    "rate": 14,
-   "baseRate": 5,
+   "guaranteed": 5,
    "accrual": "на ежедневный остаток",
    "capitalization": "monthly",
    "conditions": "11–14% при тратах по картам ПСБ от 10 тыс. ₽ в мес. (максимум — от 250 тыс. ₽); для OPC надбавка на остаток до 3 млн ₽; без трат 5%",
-   "guaranteed": 14,
    "id": "psb|savings|акцент-на-процент|premium"
   },
   {
@@ -2029,13 +2030,13 @@
    "source": "https://www.psbank.ru/personal/savingsaccount/impuls",
    "name": "Импульс",
    "rate": 16,
-   "baseRate": 9,
+   "guaranteed": 9,
+   "promoRate": 16,
    "promoMonths": 2,
    "newClientsOnly": true,
    "accrual": "ежемесячно с капитализацией",
    "capitalization": "monthly",
    "conditions": "16% первые 2 мес. на сумму до 5 млн ₽ — только новым клиентам (без счетов и вкладов в ПСБ 180 дней), далее 9%",
-   "guaranteed": 16,
    "id": "psb|savings|импульс|premium"
   },
   {
@@ -2057,7 +2058,7 @@
  "status": {
   "alfa": {
    "ok": true,
-   "at": "2026-11-26T10:23:49.852Z",
+   "at": "2026-11-26T10:31:25.298Z",
    "count": 5,
    "warnings": [
     "ручное обновление от 26.11.2026"
@@ -2066,31 +2067,31 @@
   },
   "tbank": {
    "ok": true,
-   "at": "2026-11-26T10:23:50.586Z",
+   "at": "2026-11-26T10:31:25.971Z",
    "count": 4,
    "lastOk": "2026-11-26"
   },
   "vtb": {
    "ok": true,
-   "at": "2026-11-26T10:23:51.841Z",
+   "at": "2026-11-26T10:31:26.426Z",
    "count": 5,
    "lastOk": "2026-11-26"
   },
   "gpb": {
    "ok": true,
-   "at": "2026-11-26T10:23:54.275Z",
+   "at": "2026-11-26T10:31:29.652Z",
    "count": 5,
    "lastOk": "2026-11-26"
   },
   "sber": {
    "ok": true,
-   "at": "2026-11-26T10:23:58.382Z",
+   "at": "2026-11-26T10:31:32.126Z",
    "count": 6,
    "lastOk": "2026-11-26"
   },
   "psb": {
    "ok": true,
-   "at": "2026-11-26T10:24:10.493Z",
+   "at": "2026-11-26T10:31:42.942Z",
    "count": 9,
    "lastOk": "2026-11-26"
   }
@@ -2109,8 +2110,8 @@
   "vtb|savings|накопительный-втб-счёт|premium": "baseline",
   "tbank|deposit|смартвклад|пополнение-в-любое-время|premium": "baseline",
   "tbank|deposit|смартвклад|пополнение-30-дней|premium": "baseline",
-  "tbank|savings|тпн-8-0-рубли-рф|private": "baseline",
-  "tbank|savings|тпн-8-0-рубли-рф|premium": "baseline",
+  "tbank|savings|накопительный-счёт|private": "baseline",
+  "tbank|savings|накопительный-счёт|premium": "baseline",
   "alfa|deposit|альфа-вклад-ключевой|плавающая-ставка|only": "baseline",
   "alfa|deposit|альфа-вклад|без-пополнения-и-снятия|only": "baseline",
   "alfa|deposit|альфа-вклад-максимальный|без-пополнения|only": "baseline",

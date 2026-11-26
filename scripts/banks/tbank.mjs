@@ -71,7 +71,7 @@ export async function fetchTbank() {
     const v = sar.rates?.[k.toLowerCase()];
     if (v == null) continue;
     out.push({
-      bank: "tbank", tier: k.toLowerCase(), tierName: name, type: "savings", name: sar.marketingName || "Накопительный счёт",
+      bank: "tbank", tier: k.toLowerCase(), tierName: name, type: "savings", name: "Накопительный счёт", tariff: sar.marketingName || sar.partNum || null,
       rate: v, baseRate: sar.rates.base, accrual: "на ежедневный остаток, выплата раз в месяц", capitalization: "monthly",
       conditions: "без лимита суммы, снятие без потери процентов", source: SRC_SA,
     });

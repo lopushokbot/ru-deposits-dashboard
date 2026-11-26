@@ -106,14 +106,14 @@ export async function fetchPsb({ refAmount = 3e6 } = {}) {
     const rows = ts.flatMap(t => t.rows);
     const promo = rows.find(r => /первые/i.test(r[0])), base = rows.find(r => /Базов/i.test(r[0]));
     const p = promo && num(promo[2]), b = base && num(base.at(-1));
-    return p && { name: "Импульс", rate: p, baseRate: b, promoMonths: 2, newClientsOnly: true, accrual: "ежемесячно с капитализацией", capitalization: "monthly",
+    return p && { name: "Импульс", rate: p, guaranteed: b, promoRate: p, promoMonths: 2, newClientsOnly: true, accrual: "ежемесячно с капитализацией", capitalization: "monthly",
       conditions: `${p}% первые 2 мес. на сумму до 5 млн ₽ — только новым клиентам (без счетов и вкладов в ПСБ 180 дней), далее ${b}%` };
   });
   await sa("/personal/savingsaccount/accentpercent", ts => {
     const t = ts.find(x => x.rows.some(r => /Итогов/i.test(r[0])));
     if (!t) return null;
     const tot = t.rows.find(r => /Итогов/i.test(r[0])).slice(1).map(num).filter(v => v != null);
-    return { name: "Акцент на процент", rate: Math.max(...tot), baseRate: 5, accrual: "на ежедневный остаток", capitalization: "monthly",
+    return { name: "Акцент на процент", rate: Math.max(...tot), guaranteed: 5, accrual: "на ежедневный остаток", capitalization: "monthly",
       conditions: `${Math.min(...tot)}–${Math.max(...tot)}% при тратах по картам ПСБ от 10 тыс. ₽ в мес. (максимум — от 250 тыс. ₽); для OPC надбавка на остаток до 3 млн ₽; без трат 5%` };
   });
   return { products: out, errors };
