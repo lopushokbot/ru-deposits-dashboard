@@ -11,9 +11,11 @@
 	</array>
 	<key>WorkingDirectory</key>
 	<string>/Users/iibot/ru-deposits-dashboard</string>
-	<!-- 08:30 Dubai daily, plus every hour and at login so missed runs catch up (run.sh allows one success per day) -->
+	<!-- Thursday 08:30 Dubai, plus hourly and at login so a missed run catches up (run.sh asks scripts/schedule.mjs what is due) -->
 	<key>StartCalendarInterval</key>
 	<dict>
+		<key>Weekday</key>
+		<integer>4</integer>
 		<key>Hour</key>
 		<integer>8</integer>
 		<key>Minute</key>

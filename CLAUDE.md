@@ -9,7 +9,8 @@ Apple-style static dashboard of deposit (≤ 12 months, focus 2–6) and savings
 | Live | https://lopushokbot.github.io/ru-deposits-dashboard/ (GitHub Pages, `main`, root) |
 | GitHub | https://github.com/lopushokbot/ru-deposits-dashboard (**public**, by Sema's choice 2026-11-26; positions are names + stated rates only, no amounts) |
 | Local | `/Users/iibot/ru-deposits-dashboard/` (outside ~/Documents — TCC blocks launchd there) |
-| Schedule | LaunchAgent `com.lopushokbot.ru-deposits` → `run.sh`: 08:30 Dubai + hourly catch-up, one success/day |
+| Schedule | **Weekly, Thursday 08:30 Dubai** (Sema, 2026-11-26). LaunchAgent `com.lopushokbot.ru-deposits` → `run.sh`; hourly ticks ask `scripts/schedule.mjs` what is due (catch-up if the Mac slept; failed Telegram send retried alone) |
+| Telegram | Digest to Sema's DM after each weekly update: shared bot token `~/.claude/channels/telegram/.env`, chat id in local `.env` (`TELEGRAM_CHAT_ID`, chmod 600, gitignored — repo is public) |
 
 ## Files
 
@@ -20,6 +21,9 @@ config.json           banks, funds, positions (user's stated rates), refAmount (
 manual/alfa.json      Альфа rates, maintained BY HAND (see below)
 scripts/lib.mjs       HTTP with system roots + Russian Trusted Root CA, MOEX ISS (funds, RUSFAR), cbr.ru key rate
 scripts/banks/*.mjs   one module per bank → normalised products
+scripts/derive.mjs    highlights + position views (stored in data.json; page and Telegram use the same picks)
+scripts/notify.mjs    Telegram digest (`--dry` prints it)
+scripts/schedule.mjs  weekly due-check; state in logs/state.json
 scripts/pdf_ocr.swift Apple Vision OCR for the Sber leaflet (compiled to bin/pdf_ocr by run.sh; bin/ gitignored)
 raw/                  Sber leaflet + OCR cache (gitignored)
 ```

@@ -8,6 +8,7 @@ import { fetchTbank } from "./banks/tbank.mjs";
 import { fetchAlfa } from "./banks/alfa.mjs";
 import { fetchGpb } from "./banks/gpb.mjs";
 import { fetchPsb } from "./banks/psb.mjs";
+import { highlights, positionViews } from "./derive.mjs";
 
 const cfg = readJSON(CONFIG_PATH);
 const prev = fs.existsSync(DATA_PATH) ? readJSON(DATA_PATH) : null;
@@ -96,6 +97,8 @@ async function main() {
     changes: changes.filter(c => (Date.parse(today) - Date.parse(c.date)) / 864e5 <= 45).slice(-200),
     notes: prev?.notes || [],
   };
+  data.highlights = highlights(data);
+  data.positionViews = positionViews(data);
   const okBanks = Object.values(status).filter(s => s.ok).length;
   if (okBanks < 3) throw new Error(`only ${okBanks}/6 banks fetched — not publishing`);
   writeJSON(DATA_PATH, data);

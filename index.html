@@ -464,12 +464,21 @@ function renderPositions() {
 function renderHighlights() {
   const used = new Set(), k = DATA.keyRate.value;
   const myBest = Math.max(...DATA.positions.map(positionView).map(v => v.pos.userRate ?? v.current ?? 0));
-  const cards = [];
-  const add = (kind, title, why, b) => { if (!b) return; used.add(b.p.id); cards.push({ kind, title, why, ...b }); };
-  add("dep", "Короткий срок · 2–3 мес", "Самая высокая ставка, если деньги понадобятся через 2–3 месяца.", bestDeposit([2, 3]));
-  add("dep", "Оптимум · 4–6 мес", "Фиксирует ставку на полгода — полезно, если ключевую начнут снижать.", bestDeposit([4, 5, 6], () => true, used));
-  add("dep", "Без «новых денег»", "Можно открыть на деньги, которые уже лежат в этом банке.", bestDeposit([3, 4, 5, 6], p => !isNewMoney(p) && !p.floating, used));
-  const s = bestSavings();
+  // picks are computed once in scripts/derive.mjs (same list goes to Telegram); fallback for older data.json
+  const byId = id => DATA.products.find(p => p.id === id);
+  let cards, s;
+  if (DATA.highlights?.length) {
+    cards = DATA.highlights.filter(h => h.kind === "deposit" && byId(h.id)).map(h => ({ ...h, p: byId(h.id) }));
+    const hs = DATA.highlights.find(h => h.kind === "savings");
+    s = hs && byId(hs.id);
+  } else {
+    cards = [];
+    const add = (title, why, b) => { if (!b) return; used.add(b.p.id); cards.push({ title, why, ...b }); };
+    add("Короткий срок · 2–3 мес", "Самая высокая ставка, если деньги понадобятся через 2–3 месяца.", bestDeposit([2, 3]));
+    add("Оптимум · 4–6 мес", "Фиксирует ставку на полгода — полезно, если ключевую начнут снижать.", bestDeposit([4, 5, 6], () => true, used));
+    add("Без «новых денег»", "Можно открыть на деньги, которые уже лежат в этом банке.", bestDeposit([3, 4, 5, 6], p => !isNewMoney(p) && !p.floating, used));
+    s = bestSavings();
+  }
   const html = cards.map(c => {
     const p = c.p;
     const badges = [isNewMoney(p) && `<span class="badge">новые деньги</span>`, p.upTo && `<span class="badge grey">до</span>`, p.promo && `<span class="badge warn">акция</span>`, isNewProduct(p) && `<span class="badge">новинка</span>`].filter(Boolean).join("");
